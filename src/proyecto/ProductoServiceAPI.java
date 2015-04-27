@@ -15,7 +15,7 @@ import com.google.api.server.spi.response.NotFoundException;
  * @author Sebastian
  *
  */
-@Api(name="Producto productos", version="v1", description="API de la lista de productos")
+@Api(name="producto", version="v1", description="API de la lista de productos")
 
 public class ProductoServiceAPI {
 
@@ -56,7 +56,7 @@ public class ProductoServiceAPI {
 			return productos;
 	}
 	
-	@ApiMethod(name="Listar por Nombre")
+	@ApiMethod(name="listarProNombre")
 	public List<Producto> getproductosByAuthor(@Named("Nombre") String nombre){
 		List<Producto> results = new ArrayList<Producto>();
 		for(Producto Producto : productos){
