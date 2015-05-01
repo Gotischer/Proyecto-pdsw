@@ -25,6 +25,43 @@
     "maxAge" : 0
   },
   "methods" : {
+    "producto.listarPorNombre" : {
+      "path" : "productocollection/{Nombre}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "proyecto.ProductoServiceAPI.getproductosByAuthor",
+      "request" : {
+        "parameters" : {
+          "Nombre" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "producto.update" : {
+      "path" : "producto",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "proyecto.ProductoServiceAPI.updateProducto",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "producto.add" : {
       "path" : "addProducto/{id}/{Nombre}/{Descripcion}/{Precio}/{Cantidad}",
       "httpMethod" : "POST",
@@ -62,22 +99,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "producto.update" : {
-      "path" : "producto",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "proyecto.ProductoServiceAPI.updateProducto",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "producto.remove" : {
       "path" : "producto/{id}",
       "httpMethod" : "DELETE",
@@ -99,27 +120,6 @@
         "body" : "empty"
       }
     },
-    "producto.getProducto" : {
-      "path" : "producto/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "proyecto.ProductoServiceAPI.getProducto",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int32",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "producto.list" : {
       "path" : "productocollection",
       "httpMethod" : "GET",
@@ -135,18 +135,18 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "producto.listarProNombre" : {
-      "path" : "productocollection/{Nombre}",
+    "producto.getProducto" : {
+      "path" : "producto/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "proyecto.ProductoServiceAPI.getproductosByAuthor",
+      "rosyMethod" : "proyecto.ProductoServiceAPI.getProducto",
       "request" : {
         "parameters" : {
-          "Nombre" : {
-            "type" : "string",
+          "id" : {
+            "type" : "int32",
             "required" : true
           }
         },
@@ -194,9 +194,9 @@
       }
     },
     "methods" : {
-      "proyecto.ProductoServiceAPI.addProducto" : {
+      "proyecto.ProductoServiceAPI.getproductosByAuthor" : {
         "response" : {
-          "$ref" : "Producto"
+          "$ref" : "ProductoCollection"
         }
       },
       "proyecto.ProductoServiceAPI.updateProducto" : {
@@ -207,21 +207,21 @@
           "$ref" : "Producto"
         }
       },
-      "proyecto.ProductoServiceAPI.removeProducto" : {
-      },
-      "proyecto.ProductoServiceAPI.getProducto" : {
+      "proyecto.ProductoServiceAPI.addProducto" : {
         "response" : {
           "$ref" : "Producto"
         }
+      },
+      "proyecto.ProductoServiceAPI.removeProducto" : {
       },
       "proyecto.ProductoServiceAPI.getproductos" : {
         "response" : {
           "$ref" : "ProductoCollection"
         }
       },
-      "proyecto.ProductoServiceAPI.getproductosByAuthor" : {
+      "proyecto.ProductoServiceAPI.getProducto" : {
         "response" : {
-          "$ref" : "ProductoCollection"
+          "$ref" : "Producto"
         }
       }
     }

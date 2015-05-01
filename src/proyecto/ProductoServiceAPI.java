@@ -56,7 +56,7 @@ public class ProductoServiceAPI {
 			return productos;
 	}
 	
-	@ApiMethod(name="listarProNombre")
+	@ApiMethod(name="listarPorNombre")
 	public List<Producto> getproductosByAuthor(@Named("Nombre") String nombre){
 		List<Producto> results = new ArrayList<Producto>();
 		for(Producto Producto : productos){
