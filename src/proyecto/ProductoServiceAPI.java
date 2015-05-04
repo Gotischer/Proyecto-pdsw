@@ -21,11 +21,11 @@ public class ProductoServiceAPI {
 
 	public static List<Producto> productos = new ArrayList<Producto>();
 	@ApiMethod(name="add")
-	public Producto addProducto(@Named("id")Integer id, @Named("Nombre")String nombre, @Named("Descripcion")String descripcion, @Named("Precio")double precio,@Named("Cantidad")Integer cantidad)
+	public Producto addProducto(@Named("id")Integer id,@Named("idVendedor")Integer idVendedor, @Named("Nombre")String nombre, @Named("Descripcion")String descripcion, @Named("Precio")double precio,@Named("Cantidad")Integer cantidad)
 	throws NotFoundException{
 		int index = productos.indexOf(new Producto(id));
 		if(index!=-1)throw new NotFoundException("Producto Record already exist");
-		Producto q = new Producto(id, nombre, descripcion, precio, cantidad);
+		Producto q = new Producto(id,idVendedor, nombre, descripcion, precio, cantidad);
 		productos.add(q);
 		return q;
 	}

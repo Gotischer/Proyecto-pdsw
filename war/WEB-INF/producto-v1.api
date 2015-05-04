@@ -46,24 +46,8 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "producto.update" : {
-      "path" : "producto",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "proyecto.ProductoServiceAPI.updateProducto",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "producto.add" : {
-      "path" : "addProducto/{id}/{Nombre}/{Descripcion}/{Precio}/{Cantidad}",
+      "path" : "addProducto/{id}/{idVendedor}/{Nombre}/{Descripcion}/{Precio}/{Cantidad}",
       "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -73,6 +57,10 @@
       "request" : {
         "parameters" : {
           "id" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "idVendedor" : {
             "type" : "int32",
             "required" : true
           },
@@ -99,6 +87,37 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "producto.update" : {
+      "path" : "producto",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "proyecto.ProductoServiceAPI.updateProducto",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "producto.list" : {
+      "path" : "productocollection",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "proyecto.ProductoServiceAPI.getproductos",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "producto.remove" : {
       "path" : "producto/{id}",
       "httpMethod" : "DELETE",
@@ -118,21 +137,6 @@
       },
       "response" : {
         "body" : "empty"
-      }
-    },
-    "producto.list" : {
-      "path" : "productocollection",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "proyecto.ProductoServiceAPI.getproductos",
-      "request" : {
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
       }
     },
     "producto.getProducto" : {
@@ -177,6 +181,9 @@
           },
           "cantidad" : {
             "type" : "integer"
+          },
+          "idVendedor" : {
+            "type" : "integer"
           }
         }
       },
@@ -199,6 +206,11 @@
           "$ref" : "ProductoCollection"
         }
       },
+      "proyecto.ProductoServiceAPI.addProducto" : {
+        "response" : {
+          "$ref" : "Producto"
+        }
+      },
       "proyecto.ProductoServiceAPI.updateProducto" : {
         "request" : {
           "$ref" : "Producto"
@@ -207,17 +219,12 @@
           "$ref" : "Producto"
         }
       },
-      "proyecto.ProductoServiceAPI.addProducto" : {
-        "response" : {
-          "$ref" : "Producto"
-        }
-      },
-      "proyecto.ProductoServiceAPI.removeProducto" : {
-      },
       "proyecto.ProductoServiceAPI.getproductos" : {
         "response" : {
           "$ref" : "ProductoCollection"
         }
+      },
+      "proyecto.ProductoServiceAPI.removeProducto" : {
       },
       "proyecto.ProductoServiceAPI.getProducto" : {
         "response" : {

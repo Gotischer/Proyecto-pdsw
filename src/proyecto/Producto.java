@@ -9,6 +9,7 @@ public class Producto {
 	private String descripcion;
 	private double precio;
 	private Integer cantidad;
+	private Integer idVendedor;
 
 	public Producto() {
 		// TODO Auto-generated constructor stub
@@ -19,13 +20,14 @@ public class Producto {
 		this.setId(id);
 	}
 	
-	public Producto(Integer id,String nombre,String descripcion,double precio,Integer cantidad){
+	public Producto(Integer id,Integer idVendedor,String nombre,String descripcion,double precio,Integer cantidad){
 		super();
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
 		this.setPrecio(precio);
 		this.setCantidad(cantidad);
+		this.setIdVendedor(idVendedor);
 	}
 	
 	public int hashCode(){
@@ -93,6 +95,14 @@ public class Producto {
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	public Integer getIdVendedor() {
+		return idVendedor;
+	}
+
+	public void setIdVendedor(Integer idVendedor) {
+		this.idVendedor = idVendedor;
 	}
 
 }
